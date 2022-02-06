@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:BeautyShopApp.Controls"
+    xmlns:viewmodels="clr-namespace:BeautyShopApp.ViewModels" 
+    xmlns:templates="clr-namespace:BeautyShopApp.Views.Templates"
+    x:Class="BeautyShopApp.Views.HomeView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="PageBackgroundColor">#EBEAEF</Color>
+
+            <Style x:Key="SectionContainerStyle" TargetType="Grid">
+                <Setter Property="Margin" Value="12, 0, 12, 12" />
+            </Style>
+            
+            <Style x:Key="AlignedSectionContainerStyle" TargetType="Grid"
+                   BasedOn="{StaticResource SectionContainerStyle}">
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="TitleTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="Fallingsky" />
+                <Setter Property="CharacterSpacing" Value="1.5" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="ProfileContainerStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+
+            <Color x:Key="SearchContainerColor">#F9F9F9</Color>
+            
+            <Style x:Key="SearchContainerStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource SearchContainerColor}" />
+                <Setter Property="CornerRadius" Value="18" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+            <Style x:Key="SearchTextStyle" TargetType="controls:BorderlessSearchBar">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Fallingsky" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="PlaceholderColor" Value="Black" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="FilterContainerStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="18" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Padding" Value="6" />
+            </Style>
+
+            <Style x:Key="FilterImageStyle" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="2" />
+            </Style>
+
+            <DataTemplate x:Key="ResultsItemTemplate">
+                <templates:ResultsItemTemplate />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ProductItemTemplate">
+                <templates:ProductItemTemplate />
+            </DataTemplate>
+            
+            <templates:ProductDataTemplateSelector 
+                x:Key="ProductDataTemplateSelector"                
+                ResultsTemplate="{StaticResource ResultsItemTemplate}"
+                ProductTemplate="{StaticResource ProductItemTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <viewmodels:HomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid 
+            BackgroundColor="{StaticResource PageBackgroundColor}">
+            <Grid
+                RowDefinitions="Auto, 60, *"
+                Padding="24">
+                <!-- HEADER -->
+                <Grid
+                    ColumnDefinitions="Auto, *"
+                    Style="{StaticResource SectionContainerStyle}">
+                    <Label
+                        Grid.ColumnSpan="2"
+                        Text="Search Product"
+                        Style="{StaticResource TitleTextStyle}"/>
+                    <Frame
+                        Grid.Column="1"
+                        Style="{StaticResource ProfileContainerStyle}">
+                        <Image
+                            Source="javier.png"/>
+                    </Frame>
+                </Grid>
+                <!-- SEARCH -->
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*, Auto"
+                    Style="{StaticResource AlignedSectionContainerStyle}">
+                    <Frame
+                        Style="{StaticResource SearchContainerStyle}">
+                        <controls:BorderlessSearchBar
+                            Placeholder="Cleansers"
+                            Style="{StaticResource SearchTextStyle}"/>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Style="{StaticResource FilterContainerStyle}">
+                        <Image
+                            Source="slider.png"
+                            Style="{StaticResource FilterImageStyle}">
+                            <!--
+                            <Image.Source>
+                                <FontImageSource             
+                                    FontFamily="Material Icons"
+                                    Glyph="&#xe076;"
+                                    Color="Black"
+                                    Size="18"/>
+                            </Image.Source>
+                            -->
+                        </Image>
+                    </Frame>
+                </Grid>
+                <!-- PRODUCT LIST -->
+                <ScrollView
+                    Grid.Row="2"
+                    Style="{StaticResource SectionContainerStyle}">
+                    <controls:VariableSizedWrapGrid
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        ItemHeight="100"
+                        ItemWidth="180" 
+                        MaximumRowsOrColumns="2"
+                        BindableLayout.ItemsSource="{Binding Products}"
+                        BindableLayout.ItemTemplateSelector="{StaticResource ProductDataTemplateSelector}" />
+                </ScrollView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
