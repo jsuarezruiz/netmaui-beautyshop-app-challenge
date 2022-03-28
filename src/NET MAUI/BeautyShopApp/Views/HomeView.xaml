@@ -34,7 +34,7 @@
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="Padding" Value="0" />
             </Style>
@@ -62,8 +62,8 @@
                 <Setter Property="CornerRadius" Value="18" />
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="WidthRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="WidthRequest" Value="48" />
                 <Setter Property="Padding" Value="6" />
             </Style>
 
@@ -95,7 +95,7 @@
         <Grid 
             BackgroundColor="{StaticResource PageBackgroundColor}">
             <Grid
-                RowDefinitions="Auto, 60, *"
+                RowDefinitions="100, 60, *"
                 Padding="24">
                 <!-- HEADER -->
                 <Grid
@@ -148,8 +148,8 @@
                     <controls:VariableSizedWrapGrid
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
-                        ItemHeight="100"
-                        ItemWidth="180" 
+                        ItemHeight="80"
+                        ItemWidth="160" 
                         MaximumRowsOrColumns="2"
                         BindableLayout.ItemsSource="{Binding Products}"
                         BindableLayout.ItemTemplateSelector="{StaticResource ProductDataTemplateSelector}" />

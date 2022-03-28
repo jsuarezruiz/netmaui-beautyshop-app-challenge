@@ -49,6 +49,26 @@
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\cleansing_oil_01.png" />
+	  <None Remove="Resources\Images\cleansing_oil_02.jpg" />
+	  <None Remove="Resources\Images\cleansing_oil_03.jpg" />
+	  <None Remove="Resources\Images\facial_cleanser_01.png" />
+	  <None Remove="Resources\Images\facial_cleanser_02.jpg" />
+	  <None Remove="Resources\Images\facial_cleanser_03.jpg" />
+	  <None Remove="Resources\Images\heart.png" />
+	  <None Remove="Resources\Images\javier.png" />
+	  <None Remove="Resources\Images\micellar_01.png" />
+	  <None Remove="Resources\Images\micellar_02.jpg" />
+	  <None Remove="Resources\Images\micellar_03.jpg" />
+	  <None Remove="Resources\Images\moisturiser_01.png" />
+	  <None Remove="Resources\Images\moisturiser_02.jpg" />
+	  <None Remove="Resources\Images\moisturiser_03.jpg" />
+	  <None Remove="Resources\Images\shampoo_01.png" />
+	  <None Remove="Resources\Images\shampoo_02.jpg" />
+	  <None Remove="Resources\Images\slider.png" />
+	</ItemGroup>
+
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>

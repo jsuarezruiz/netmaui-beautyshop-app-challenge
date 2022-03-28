@@ -10,7 +10,7 @@ namespace BeautyShopApp.Controls
     {
         bool _ignorePropertyChange;
 
-        readonly Dictionary<View, Rectangle> _arrangeInfo = new Dictionary<View, Rectangle>();
+        readonly Dictionary<View, Rect> _arrangeInfo = new Dictionary<View, Rect>();
 
         public double ItemWidth
         {
@@ -192,7 +192,7 @@ namespace BeautyShopApp.Controls
                     columnSpan = columns - x;
                 }
 
-                Rectangle childRect = new Rectangle(x * itemWidth, y * itemHeight, itemWidth * columnSpan, itemHeight * rowSpan);
+                Rect childRect = new Rect(x * itemWidth, y * itemHeight, itemWidth * columnSpan, itemHeight * rowSpan);
                 _arrangeInfo[child] = childRect;
 
                 if (desiredWidth < childRect.Right)
@@ -228,7 +228,7 @@ namespace BeautyShopApp.Controls
 
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
-            foreach (KeyValuePair<View, Rectangle> info in _arrangeInfo)
+            foreach (KeyValuePair<View, Rect> info in _arrangeInfo)
             {
                 LayoutChildIntoBoundingRegion(info.Key, info.Value);
             }
