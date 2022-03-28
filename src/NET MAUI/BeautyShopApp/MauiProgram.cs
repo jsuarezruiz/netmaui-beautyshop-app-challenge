@@ -9,7 +9,9 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("fallingsky.otf", "Fallingsky");
+				fonts.AddFont("fallingskybd.otf", "Fallingskybd");
+				fonts.AddFont("fallingskylight.otf", "Fallingsky Light");
 			});
 
 		return builder.Build();

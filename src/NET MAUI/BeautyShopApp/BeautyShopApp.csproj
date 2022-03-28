@@ -50,6 +50,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\fallingsky.otf" />
+	  <None Remove="Resources\Fonts\fallingskybd.otf" />
+	  <None Remove="Resources\Fonts\fallingskylight.otf" />
 	  <None Remove="Resources\Images\cleansing_oil_01.png" />
 	  <None Remove="Resources\Images\cleansing_oil_02.jpg" />
 	  <None Remove="Resources\Images\cleansing_oil_03.jpg" />
